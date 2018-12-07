@@ -1,0 +1,26 @@
+Reporte Modelo Relacional
+
+Primero creamos las entidades que nos indican en el caso de uso, que son, choferes, vehiculos y dueño con sus
+respectivos atributos. En esta parte lo más importante a resaltar es la herencia de Choferes a Dueños, decidimos
+que Dueño herede de Chofer ya que estos comparten los mismos atributos excepto por el RFC del Dueño.
+
+para diferenciar entre el dueño y el chofer de un vehiculo se crearon dos relaciones, una llamada 'Posee'
+entre Dueño y Vehiculo para saber quién es dueño del auto, y una segunda relación entre Chofer y Vehiculo llamada
+'Maneja', de esta manera se distinguen los dueños de los choferes, pero esto no impide que dueños manejen su propio
+auto. La relación 'Maneja' es de n a n ya que un vehiculo puede ser manejado por muchos choferes, así como un chofer
+pude manejar muchos vehiculos.
+
+Sobre los clientes: Estos pueden ser Alumnos, Academicos o Trabajadores; entonces creamos una entidad llamada 'Cliente'
+la cual contiene todos los atributos que tienen en común todos los tipos de clientes, como son: el nombre,
+correo electronico, etc. Por lo que los 3 tipos de clientes heredan de esta entidad Cliente, teniendo cada uno de los
+tipos de cliente el atributo que lo distingue. Alumno con facultad, Trabajador con unidad y Académico con instituto.
+El tipo de herencia es total disyuntiva ya que sólo podemos tener clientes que sean Trabajadores, Alumnos o Académicos,
+y no se puede ser dos tipos de cliente a la vez.
+
+para llevar la información de los vajes creamos una entidad 'Viajes' que relacionamos con Chofer, Cliente y Vehiculo:
+    *La relacion con Vehículo se llama 'hace' y es de 1 a n ya que un viaje sólo puede ser realizado por un solo auto.
+    *La relación con Chofer 'condujo' , al igual que la anterior es de 1 a n porque un viaje sólo puede ser realizado
+        por un solo chofer.
+    *La relación con Cliente es de n a n ya que en el mismo viaje se puede tener mas de un cliente.
+las tres relaciones anteriores son totales porque todo viaje necesita de un Chofer, un Vehículo y de al menos un Cliente
+de lo contrario no tendría sentido realizar el viaje.
