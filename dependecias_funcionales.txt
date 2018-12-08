@@ -1,0 +1,25 @@
+##chofer
+licencia ->  Nombre, id_direccion, fecha_ingreso,fotografía, correo_electrónico, celular
+
+##vehiculo
+número económico  ->  Modelo, marca, num_cilindros, num_puertas, llanta_refaccion, estandar_o_automatico,
+    gasolina_o_híbrido, num_pasajeros, capacidad_tanque
+
+##dueño
+licencia -> rfc
+
+##direccion
+id_direccion -> estado, delegacion, calle, numero, cp
+
+##vehiculos que ya no son de la flotilla
+licencia -> fecha_baja, razon_baja
+
+##maneja
+licencia, num_economico -> licencia, num_economico
+
+##posee
+num_economico -> rfc
+
+##ya no supe bien como modelar la parte de cliente, revisenlo
+##cliente
+id_cliente -> nombre, paterno, materno, id_direccion, telefono_fijo, celular, hora_entrada, hora_salida, foto
