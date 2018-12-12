@@ -1,4 +1,4 @@
-﻿DROP DATABASE IF EXISTS asoc_taxis;
+DROP DATABASE IF EXISTS asoc_taxis;
 CREATE DATABASE asoc_taxis;
 
 \c asoc_taxis;
@@ -148,7 +148,7 @@ COMMENT ON COLUMN vehiculo.fecha_de_baja IS 'Fecha de baja del vehiculo';
 COMMENT ON COLUMN vehiculo.razon_de_baja IS 'Razon de baja del vehiculo';
 
 
-CREATE TABLE Viaje (
+CREATE TABLE Viajes (
 id_viaje SERIAL,
 num_licencia VARCHAR (9),
 numero_economico INTEGER,
@@ -188,7 +188,7 @@ COMMENT ON COLUMN solicitar.id_viaje IS 'Llave foranea que hace referencia al vi
 COMMENT ON COLUMN solicitar.origen IS 'Lugar donde se solicito el viaje';
 COMMENT ON COLUMN solicitar.destino IS 'Destino del viaje';
 
-CREATE TABLE Manejar (
+CREATE TABLE Maneja (
 num_licencia VARCHAR (9),
 numero_economico INTEGER,
 CONSTRAINT fk1_maneja FOREIGN KEY (num_licencia) REFERENCES Chofer(num_licencia) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -199,7 +199,7 @@ COMMENT ON TABLE maneja IS 'Tabla que contiene los choferes que manejan los carr
 COMMENT ON COLUMN maneja.num_licencia IS 'Llave foranea que hace referencia al chofer';
 COMMENT ON COLUMN maneja.numero_economico IS 'Llave foranea que hace referencia al vehiculo';
 
-CREATE TABLE Infraccion (
+CREATE TABLE Infracciones (
 id_infraccion SERIAL,
 num_licencia VARCHAR (9),
 numero_economico INTEGER,
@@ -208,6 +208,7 @@ placa_del_agente VARCHAR(20),
 lugar VARCHAR(200),
 hora DATE,
 razon VARCHAR(200),
+CONSTRAINT pk_infracciones PRIMARY KEY (id_infraccion),
 CONSTRAINT fk1_infracciones FOREIGN KEY (num_licencia) REFERENCES Chofer(num_licencia) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk2_infracciones FOREIGN KEY (numero_economico) REFERENCES vehiculo(numero_economico) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -223,10 +224,10 @@ COMMENT ON COLUMN infracciones.hora IS 'Hora cuando se cometio la infraccion';
 COMMENT ON COLUMN infracciones.razon IS 'Razon de la infraccion';
 
 CREATE TABLE Llave(
-id_cliente SERIAL,
-id_viaje SERIAL,
-id_infraccion SERIAL,
+id_cliente INTEGER,
+id_viaje INTEGER,
+id_infraccion INTEGER,
 CONSTRAINT fk_llaveCliente FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE RESTRICT ON UPDATE CASCADE,
-CONSTRAINT fk_llaveViaje FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje) ON DELETE RESTRICT ON UPDATE CASCADE,
-CONSTRAINT fk_llaveInfraccion FOREIGN KEY (id_infraccion) REFERENCES Infraccion(id_infraccion) ON DELETE RESTRICT ON UPDATE CASCADE
+CONSTRAINT fk_llaveViaje FOREIGN KEY (id_viaje) REFERENCES Viajes(id_viaje) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT fk_llaveInfraccion FOREIGN KEY (id_infraccion) REFERENCES Infracciones(id_infraccion) ON DELETE RESTRICT ON UPDATE CASCADE
 );
