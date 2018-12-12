@@ -8,7 +8,7 @@ Proyecto final: **Asociación de taxistas**
 
 ### Integrantes
 
-* Manu | Corre del alumno 1
+* Manu | mmonrealgamboa@ciencias.unam.mx
 * Paova | Correo del alumno 2
 * Alma Rosa Páes Alcalá | alma_rpa98@ciencias.unam.mx
 * Vázquez Aguilar Lisandro | lisandro_xp@ciencias.unam.mx
