@@ -101,4 +101,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION actualiza_cargo() RETURNS trigger as $$
+BEGIN
+	update solicitar set cargo = calcular_costo(id_viaje,id_cliente);
+	return null;
+END;
+$$ 
+LANGUAGE plpgsql;
 
+create trigger actualiza_cargo after insert or delete on solicitar
+for each row execute procedure actualiza_cargo();
