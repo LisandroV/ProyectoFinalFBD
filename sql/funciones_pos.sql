@@ -1,4 +1,4 @@
-﻿--Función que determina si una cadena representa a una email válido o no
+--Función que determina si una cadena representa a una email válido o no
 CREATE OR REPLACE FUNCTION email_valido(cadena VARCHAR) RETURNS BOOLEAN AS $$
 BEGIN
 	RETURN textregexeq(cadena,'^[^@\s]+@[^@\s]+(\.[^@\s]+)+$');
@@ -111,3 +111,5 @@ LANGUAGE plpgsql;
 
 create trigger actualiza_cargo after insert or delete on solicitar
 for each row execute procedure actualiza_cargo();
+
+insert into solicitar values(163,211,'8 Delaware','9 Larry Street',null);
