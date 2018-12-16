@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS asoc_taxis;
-CREATE DATABASE asoc_taxis;
+﻿--DROP DATABASE IF EXISTS asoc_taxis;
+--CREATE DATABASE asoc_taxis;
 
-\c asoc_taxis;
+--\c asoc_taxis;
 
 CREATE TABLE Direccion (
 id_direccion SERIAL,
