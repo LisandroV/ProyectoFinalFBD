@@ -1,4 +1,4 @@
-﻿DROP DATABASE IF EXISTS asoc_taxis;
+DROP DATABASE IF EXISTS asoc_taxis;
 CREATE DATABASE asoc_taxis;
 
 \c asoc_taxis;
@@ -30,7 +30,7 @@ materno VARCHAR (30) NOT NULL,
 celular DECIMAL (10) NOT NULL,
 email VARCHAR (254) NOT NULL,
 f_ingreso TIMESTAMP NOT NULL,
-foto BYTEA,
+foto VARCHAR(1000),
 rfc CHARACTER (13) UNIQUE,
 CONSTRAINT pk_chofer PRIMARY KEY (num_licencia),
 CONSTRAINT FK1_chofer FOREIGN KEY (id_direccion) REFERENCES Direccion(id_direccion) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -60,10 +60,10 @@ email VARCHAR (254),
 num_viajes DECIMAL(10),
 hora_entrada time,
 hora_salida time,
-foto BYTEA,
-facultad VARCHAR (50),
-instituto VARCHAR (50),
-unidad VARCHAR (50),
+foto VARCHAR(1000),
+facultad VARCHAR (500),
+instituto VARCHAR (500),
+unidad VARCHAR (500),
 CONSTRAINT pk_cliente PRIMARY KEY (id_cliente),
 CONSTRAINT FK1_cliente FOREIGN KEY (id_direccion) REFERENCES Direccion(id_direccion) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -154,9 +154,8 @@ num_licencia VARCHAR (9),
 numero_economico INTEGER,
 dentro_CU BOOLEAN NOT NULL,
 fecha DATE NOT NULL,
-tiempo INTERVAL,
+tiempo INTEGER,
 distancia INTEGER NOT NULL,
-costo INTEGER,
 CONSTRAINT pk_viaje PRIMARY KEY (id_viaje),
 CONSTRAINT fk1_viaje FOREIGN KEY (num_licencia) REFERENCES Chofer(num_licencia) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk2_viaje FOREIGN KEY (numero_economico) REFERENCES Vehiculo(numero_economico) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -168,16 +167,15 @@ COMMENT ON COLUMN Viaje.num_licencia IS 'Numero de la licencia del chofer';
 COMMENT ON COLUMN Viaje.numero_economico IS 'Llave foranea que hace referencia al vehiculo';
 COMMENT ON COLUMN Viaje.dentro_CU IS 'True si el viaje fue dentro de CU, False en otro caso';
 COMMENT ON COLUMN Viaje.fecha IS 'Fecha en la que se realizo el viaje';
-COMMENT ON COLUMN Viaje.tiempo IS 'Duracion del viajes';
+COMMENT ON COLUMN Viaje.tiempo IS 'Duracion en minutos del viaje';
 COMMENT ON COLUMN Viaje.distancia IS 'Distancia en kilometros del viaje';
-COMMENT ON COLUMN Viaje.costo IS 'Costo del viaje';
-
 
 CREATE TABLE Solicitar (
 id_cliente INTEGER,
 id_viaje INTEGER,
 origen VARCHAR(50),
 destino VARCHAR(50),
+cargo INTEGER,
 CONSTRAINT fk1_solicitar FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk2_solicitar FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -187,6 +185,7 @@ COMMENT ON COLUMN solicitar.id_cliente IS 'Llave foranea que hace referencia al 
 COMMENT ON COLUMN solicitar.id_viaje IS 'Llave foranea que hace referencia al viaje';
 COMMENT ON COLUMN solicitar.origen IS 'Lugar donde se solicito el viaje';
 COMMENT ON COLUMN solicitar.destino IS 'Destino del viaje';
+COMMENT ON COLUMN solicitar.cargo IS 'Cargo que se le hizo a la persona que solicito el viaje';
 
 CREATE TABLE Manejar (
 num_licencia VARCHAR (9),
@@ -206,7 +205,7 @@ numero_economico INTEGER,
 monto_a_pagar INTEGER,
 placa_del_agente VARCHAR(20),
 lugar VARCHAR(200),
-hora DATE,
+hora time,
 razon VARCHAR(200),
 CONSTRAINT pk_infraccion PRIMARY KEY (id_infraccion),
 CONSTRAINT fk1_infraccion FOREIGN KEY (num_licencia) REFERENCES Chofer(num_licencia) ON DELETE RESTRICT ON UPDATE CASCADE,
