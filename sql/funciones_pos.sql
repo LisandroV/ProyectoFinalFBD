@@ -111,3 +111,5 @@ LANGUAGE plpgsql;
 
 create trigger actualiza_cargo after insert or delete on solicitar
 for each row execute procedure actualiza_cargo();
+
+--DELETE FROM Solicitar WHERE id_cliente = 163;

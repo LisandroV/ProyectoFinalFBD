@@ -175,7 +175,7 @@ id_cliente INTEGER,
 id_viaje INTEGER,
 origen VARCHAR(50),
 destino VARCHAR(50),
-cargo INTEGER,
+cargo DECIMAL,
 CONSTRAINT fk1_solicitar FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk2_solicitar FOREIGN KEY (id_viaje) REFERENCES Viaje(id_viaje) ON DELETE RESTRICT ON UPDATE CASCADE
 );
