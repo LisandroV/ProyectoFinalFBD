@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Crete+Round');
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Handlee|Boogaloo|Anton|Hind');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC');
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
+}
+
+strong{
+  color: #B8860B;
+  font-size: 150%;
+  font-family: 'Cinzel', serif;
+}
+.btn-primary {
+  background-color: maroon;
+  border-color: black;
+  font-family: 'Cinzel', serif;
+  font-size: 125%;
+  border: none;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  color:#fff;
+  background-color: Brown !important; }
+.btn-primary:active, .btn-primary:focus {
+  box-shadow: rgba(165, 42, 42,0.5) !important;
+ }
+
+header.masthead {
+
+  height: 100%;
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 56px);
+  background-image: url("../img/unam.jpeg");
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+section {
+  padding: 10rem 0; }
+.bg-primary{
+  background-color: #b8860b;
+  background-image: linear-gradient(135deg, #b8860b 0%, #8b4513 100%);
+
+background-size:100%;
+color: #191970;
+font-family: 'Noto Serif TC', serif;
+
+
+}
+.bg-primary p{
+  font-family: 'Noto Serif TC', serif;
+  font-size: 150%;
+
+}
+
+#Contacto{
+  background-image: url("../img/jardin.jpg");
+  background-position: center center;
+  background-size: 120%;
+  font-size: 155%;
+  color: #F0E68C;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: bold;
+  weight:100%;
+
+
+}
+
+.navbar {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: bold;
+}
+
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  color: #fff;
+  background-color: firebrick !important; }
+.bg-primary h2{
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+  color: #E6E6FA;
+  font-size: 300%;
+}
+
+.btn-xl {
+  padding: 1rem 1rem;
+  background-color: #A9A9A9;
+  border: none;
+
+}
+.text-primary {
+  color: #2F1502 !important;
+ }
+.bg-primary a{
+  font-size: 180%;
+  color: #191970;
+  font-family: 'Noto Serif TC', serif;
+}
