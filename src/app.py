@@ -13,9 +13,9 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def main():
-    cur.execute("SELECT * FROM test")
+    #cur.execute("SELECT * FROM test")
     items = cur.fetchall()
-    print items;
+    print (items);
     context = {
         'server': 'localhost:5000',
         'message': 'hola',
