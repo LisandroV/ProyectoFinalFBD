@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, jsonify
-import psycopg2
-import config
+import psycopg2, config
+from datetime import datetime
 
 con = psycopg2.connect(
     host=config.db['host'],
@@ -16,17 +17,6 @@ def main():
 #    cur.execute("SELECT * FROM test")
 #    items = cur.fetchall()
 #    print items;
-    context = {
-        'server': 'localhost:5000',
-        'message': 'hola',
-        'items': [
-            {'name': 'Lisandro', 'age': 19},
-            {'name': 'Pablo', 'age': 20}
-        ]
-    }
-    #cur.execute("CREATE TABLE test(id serial PRIMARY KEY, name varchar, email varchar)");
-
-    con.commit();
     return render_template('index.html', **context)
 
 
@@ -81,13 +71,24 @@ def registra_trabajador_get():
 
 @app.route("/registro/auto", methods=['POST'])
 def registra_auto_post():
-    print request.form["marca"]
-    message = {
-        'status': 202,
-        'message': 'Ha sido registrado',
-    }
-    resp = jsonify(message)
+    r = request.form
+    query = "INSERT INTO Vehiculo (rfc, id_aseguradora, numero_de_pasajeros, marca, modelo, año_vehiculo,llantas_refaccion,estandar_o_automatico,num_cilindros,capacidad_tanque,gasolina_o_hibrido,num_puertas,fecha_de_alta) "
+    query += "VALUES ('{}','{}','{}','{}','{}','{}',{},'{}','{}','{}','{}','{}','{}');".format(r["rfc"],r["seguro"],r["num_pasajeros"],r["marca"],r["modelo"],r["anio"],r["refaccion"],r["transmision"],r["cilindros"],r["tanque"],r["hibrido"],r["num_puertas"], datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
+    try:
+        cur.execute(query)
+    except psycopg2.Error, e:
+        return error_500(e)
+    finally:
+        con.commit()
+
+    resp = jsonify({'message': 'Ha sido registrado'})
     resp.status_code = 202
+    return resp
+
+def error_500(e):
+    resp = jsonify({'error': e.diag.message_primary,
+                    'specific': e.pgerror})
+    resp.status_code = 500
     return resp
 
 if __name__ == '__main__':

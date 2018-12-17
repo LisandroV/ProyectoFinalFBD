@@ -43,6 +43,10 @@
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
           <form id="form-reg">
+            <label for="nombre">RFC del dueño</label>
+            <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Enter RFC">
+            <label for="nombre">Aseguradora</label>
+            <input type="text" class="form-control" id="seguro" name="seguro" placeholder="id de la aseguradora">
             <label for="nombre">Número de Pasajeros</label>
             <input type="text" class="form-control" id="num_pasajeros" name="num_pasajeros" placeholder="Enter Numero de Pasajeros">
             <label for="nombre">Marca</label>
@@ -50,17 +54,22 @@
             <label for="nombre">Modelo</label>
             <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Enter Modelo">
             <label for="nombre">Año del Vehiculo</label>
-            <input type="text" class="form-control" id="anio"  name="anio" placeholder="Enter Año">
-            <label for="nombre">Número de Puertas</label>
-            <input type="text" class="form-control" id="num_puertas" name="num_puertas" placeholder="Enter Numero de Puertas">
-            <label for="nombre">¿Estandar ó Automatico?</label>
-            <input type="text" class="form-control" id="transmision" name="transmision" placeholder="Enter Estandar/automatico">
-            <label for="nombre">Llantas de Refacción</label>
-            <input type="text" class="form-control" id="refaccion" name="refaccion" placeholder="Enter Llantas de refaccion">
-            <label for="nombre">Capacidad de tanque</label>
-            <input type="text" class="form-control" id="tanque" name="tanque" placeholder="Enter Capacidad de Tanque">
+            <input type="text" class="form-control" id="anio" name="anio" placeholder="Enter Año">
+            <label for="nombre">Tiene llanta de Refacción</label><br>
+            <input type="radio" name="refaccion" value="TRUE" checked> Sí
+            <input type="radio" name="refaccion" value="FALSE"> No<br>
+            <label for="nombre">Transmisión:</label><br>
+            <input type="radio" name="transmision" value="E" checked> Estandar
+            <input type="radio" name="transmision" value="A"> Automatico<br>
+            <label for="nombre">Gasolina o Híbrido:</label><br>
+            <input type="radio" name="hibrido" value="G" checked> Gasolina
+            <input type="radio" name="hibrido" value="H">Hibrido<br>
             <label for="nombre">Número de Cilindros</label>
             <input type="text" class="form-control" id="cilindros" name="cilindros" placeholder="Enter Numero Cilindros">
+            <label for="nombre">Capacidad de tanque</label>
+            <input type="text" class="form-control" id="tanque" name="tanque" placeholder="Enter Capacidad de Tanque">
+            <label for="nombre">Número de Puertas</label>
+            <input type="text" class="form-control" id="num_puertas" name="num_puertas" placeholder="Enter Numero de Puertas">
             <div class="text-center">
                 <button class="btn btn-primary" id="registrar">Registrar</button>
             </div>

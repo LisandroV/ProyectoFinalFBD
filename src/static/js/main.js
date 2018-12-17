@@ -1,18 +1,19 @@
 $( document ).ready(function() {
+    $('#form-reg').submit(function(e){
+        e.preventDefault();
+    });
 
 	$('#registrar').click(function(){
-        console.log($('#form-reg').serialize());
 		$.ajax({
 			url: '/registro/auto',
-			data: {'marca': 'masserati'},
+			data: $('#form-reg').serialize(),
 			type: 'POST',
 			success: function(response){
-                alert("GOOD");
-				alert(response);
+                alert(response.message);
 			},
 			error: function(error){
-				alert(error);
-				console.log(error);
+                alert(error.responseJSON.specific);
+                console.log(error)
 			}
 		});
 	});
