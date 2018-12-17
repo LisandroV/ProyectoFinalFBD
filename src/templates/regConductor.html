@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="/static/css/font-awesome.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/css/estilos_chofer.css">
+  <link rel="stylesheet" href="/static/css/estilos_auto.css">
   <link rel="stylesheet" href="/static/css/fontello.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/static/js/main.js"></script>
 </head>
 
 <body>
@@ -16,6 +18,9 @@
   <h1> ¡UNETE A LA MEJOR EMPRESA DE TRANSPORTE! </h1>
 </center>
 </header>
+<form action="pag.html">
+  <input type="submit" value="Go to Home" />
+</form>
 
 <h2> Registrate como chofer </h2>
 <br>
@@ -36,20 +41,31 @@
     </div>
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
+      <form id="form-reg">
+        <label for="nombre">Numero de Licencia</label>
+        <input type="text" class="form-control" id="num_licencia" name="num" placeholder="Enter Numero de Licencia">
         <label for="nombre">Nombre</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Numero Economico">
+        <input type="text" class="form-control" id="nombre"  name="nombre" placeholder="Enter Nombre">
         <label for="nombre">Apellido Paterno</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Numero de Pasajeros">
+        <input type="text" class="form-control" id="paterno" name="paterno" placeholder="Enter Apellido Paterno">
         <label for="nombre">Apellido Materno</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Marca">
-        <label for="nombre">Correo Electronico</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Modelo">
-        <label for="nombre">Número de Licencia</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Año">
-        <label for="nombre">¿Eres Dueño de algun auto registrado? si/no </label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Numero de Puertas">
+        <input type="text" class="form-control" id="materno" name="materno" placeholder="Enter Celular">
+        <label for="nombre">Email</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email ">
+        <label for="nombre">Ingrese RFC</label>
+        <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Enter RFC">
         <label for="nombre">RFC</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Estandar/automatico">
+        <input type="text" class="form-control" id="give_rfc" name="give_rfc" placeholder="Enter RFC">
+        <label for="nombre">Estado</label>
+        <input type="text" class="form-control" id="estado" name="estado" placeholder="Enter Estado">
+        <label for="nombre">Delegacion</label>
+        <input type="text" class="form-control" id="delegacion" name="delegacion" placeholder="Enter Delegacion">
+        <label for="nombre">Calle</label>
+        <input type="text" class="form-control" id="calle" name="calle" placeholder="Enter calle">
+        <label for="nombre">Número</label>
+        <input type="text" class="form-control" id="numero" name="numero" placeholder="Enter numero">
+        <label for="nombre">Codigo Postal</label>
+        <input type="text" class="form-control" id="cp" name="cp" placeholder="Enter codigo postal">
         <label for="nombre">¡Necesitamos una foto tuya!</label>
         <form method="post" enctype="multipart/form-data"><br>
           <input type=file size=60 name="file1"><br><br>
@@ -58,7 +74,7 @@
         <div class="text-center">
         <button class="btn btn-primary">Enviar</button>
         </div>
-
+          </form>
       </div>
     </div>
   </div>
