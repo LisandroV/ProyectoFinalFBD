@@ -138,9 +138,9 @@ BEGIN
 		RAISE EXCEPTION 'Caracter no valido'
 		USING HINT = '"G" para gasolina y "H" para hibrido';
 	END IF;
-	IF new.num_puertas > 4 or new.num_puertas < 2 THEN
+	IF new.num_puertas > 5 or new.num_puertas < 2 THEN
 		RAISE EXCEPTION 'No se pueden tener mas de 6 puertas y menos de 2'
-		USING HINT = '2 a 4 puertas';
+		USING HINT = '2 a 5 puertas';
 	END IF;
 	RETURN null;
 END;
