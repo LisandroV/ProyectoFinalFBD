@@ -1,5 +1,9 @@
 $( document ).ready(function() {
-    $('#form-reg #form-chofer #reg-users').submit(function(e){
+    $('#form-reg #form-chofer #form-users').submit(function(e){
+        e.preventDefault();
+    });
+
+    $('#form-users').submit(function(e){
         e.preventDefault();
     });
 
@@ -13,7 +17,7 @@ $( document ).ready(function() {
                 location.reload();
 			},
 			error: function(error){
-                alert(error.responseJSON.specific);
+                alert(error.responseJSON.error);
                 console.log(error)
 			}
 		});
@@ -34,10 +38,10 @@ $( document ).ready(function() {
 		});
 	});
 
-	$('#form-users').click(function(){
+	$('#reg-users').click(function(){
 		$.ajax({
-			url: '/registro/conductor',
-			data: $('#form-chofer').serialize(),
+			url: '/registro/users',
+			data: $('#form-users').serialize(),
 			type: 'POST',
 			success: function(response){
                 alert(response.message);

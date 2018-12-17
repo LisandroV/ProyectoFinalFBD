@@ -115,6 +115,44 @@ def registra_conductor_post():
     resp.status_code = 202
     return resp
 
+@app.route("/registro/users", methods=['POST'])
+def registra_users_post():
+    r = request.form
+    query = "SELECT inserta_cliente('"
+    query += r["nombre"]+"','"
+    query += r["ap_paterno"]+"','"
+    query += r["ap_materno"]+"','"
+    query += r["tel_casa"]+"','"
+    query += r["tel_cel"]+"','"
+    query += r["correo"]+"','0','"
+    query += r["entrada"]+"','"
+    query += r["salida"]+"','/static/img/user/cliente/"
+    query += r["correo"]+".jpg','"
+
+    if r["type_user_name"]=='Alumno':
+        query += r["type_user"]+"','','','"
+    elif r["type_user_name"]=='Academico':
+        query += "','"+r["type_user"]+"','','"
+    else:
+        query += "','','"+r["type_user"]+"','"
+
+    query += r["estado"]+"','"
+    query += r["delegacion"]+"','"
+    query += r["calle"]+"','"
+    query += r["numero"]+"','"
+    query += r["cp"]+"');"
+
+    try:
+        cur.execute(query)
+    except psycopg2.Error, e:
+        return error_500(e)
+    finally:
+        con.commit()
+
+    resp = jsonify({'message': "¡Cliente registrado!"})
+    resp.status_code = 202
+    return resp
+
 def error_500(e):
     print e.pgerror
     resp = jsonify({'error': e.pgerror})
