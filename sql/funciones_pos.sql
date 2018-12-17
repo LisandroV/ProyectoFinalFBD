@@ -113,3 +113,39 @@ create trigger actualiza_cargo after insert or delete on solicitar
 for each row execute procedure actualiza_cargo();
 
 insert into solicitar values(163,211,'8 Delaware','9 Larry Street',null);
+
+--Funcion que valida que los datos insertados en vehiculo sean correctos
+
+CREATE OR REPLACE FUNCTION valida_vehiculo() RETURNS TRIGGER AS $$
+BEGIN
+	IF new.numero_de_pasajeros NOT IN (1,2,3,4,5,6) THEN
+		RAISE EXCEPTION 'No se pueden meter mas de 6 pasajeros'
+		USING HINT = 'Solo se pueden llevar de 1 a 6 pasajeros';
+	END IF;
+	IF new.año_vehiculo > 2019 THEN
+		RAISE EXCEPTION 'No se puede tener un auto de ese año';
+	END IF;
+	IF new.estandar_o_automatico NOT IN ('E','A') THEN
+		RAISE EXCEPTION 'Cracter no valido'
+		USING HINT = 'Solo se puede poner "E" para esandar y "A" para automatico';
+	END IF;
+	IF new.num_cilindros > 8 THEN
+		RAISE EXCEPTION 'No se pueden tener mas de 8 cilindros';
+	END IF;
+	IF new.capacidad_tanque > 120 THEN
+		RAISE EXCEPTION 'No se pueden tener mas de 120 de capacidad';
+	END IF;
+	IF new.gasolina_o_hibrido NOT IN ('G','H') THEN
+		RAISE EXCEPTION 'Caracter no valido'
+		USING HINT = '"G" para gasolina y "H" para hibrido';
+	END IF;
+	IF new.num_puertas > 4 or new.num_puertas < 2 THEN
+		RAISE EXCEPTION 'No se pueden tener mas de 6 puertas y menos de 2'
+		USING HINT = '2 a 4 puertas';
+	END IF;
+	RETURN null;
+END;
+$$ LANGUAGE plpgsql;
+
+create trigger valida_vehiculo after insert or update on vehiculo
+for each row execute procedure valida_vehiculo();
