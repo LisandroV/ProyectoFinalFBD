@@ -78,6 +78,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Funcion que actualiza el campo cargo de la tabla solicitar usando la funcion calcular_costo
 CREATE OR REPLACE FUNCTION actualiza_cargo() RETURNS trigger as $$
 BEGIN
 	update solicitar set cargo = calcular_costo(id_viaje,id_cliente);
@@ -86,6 +87,7 @@ END;
 $$ 
 LANGUAGE plpgsql;
 
+--Trigger que utiliza la funcion actualiza_cargo() cada vez que se inserta o se elimina una tupla
 create trigger actualiza_cargo after insert or delete on solicitar
 for each row execute procedure actualiza_cargo();
 

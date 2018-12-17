@@ -18,7 +18,7 @@ RETURN NEW;
 END; 
 $$ LANGUAGE plpgsql;
 
-
+--Triggers para validar los correos en las tabla Chofer, Cliente y Aseguradora
 CREATE TRIGGER validar_c BEFORE INSERT ON Chofer FOR EACH ROW EXECUTE PROCEDURE validar_email();
 CREATE TRIGGER validar_c BEFORE INSERT ON Cliente FOR EACH ROW EXECUTE PROCEDURE validar_email();
 CREATE TRIGGER validar_c BEFORE INSERT ON Aseguradora FOR EACH ROW EXECUTE PROCEDURE validar_email();
@@ -55,6 +55,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Trigger que aplica la funcion valida_vehiculo en la tabla vehiculo
 create trigger valida_vehiculo after insert or update on vehiculo
 for each row execute procedure valida_vehiculo();
 
@@ -68,9 +69,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Trigger que aplica la funcion valida_viaje en la tabla viaje
 create trigger valida_viaje after insert or update on viaje
 for each row execute procedure valida_viaje();
 
+
+--Funcion que regresa el id de la direccion depues de agrega la tupla en la tabla direccion
 CREATE OR REPLACE FUNCTION inserta_direccion(estad VARCHAR(30), delegacio VARCHAR(30), cal varchar(30),numer DECIMAL(10),c INTEGER) RETURNS INTEGER AS $$
 DECLARE
 	mi_id INTEGER;
@@ -80,6 +84,9 @@ return mi_id;
 END;
 $$ LANGUAGE plpgsql;
 
+--Funcion que recibe los datos de chofer y de viaje para en primer lugar
+--aplicar la funcion inserta_direccion() y despues insertar la tupla chofer en la tabla chofer con el nuevo
+--id direccion
 CREATE OR REPLACE FUNCTION inserta_chofer(lic VARCHAR(9),nom varchar(30),pat varchar(30),
 										  mat varchar(30),cel DECIMAL(10),email varchar(254),f_ingreso timestamp,
 										 foto varchar(1000),rfc CHARACTER(13),
@@ -94,6 +101,9 @@ return lol;
 END;
 $$ LANGUAGE plpgsql;
 
+--Funcion que recibe los datos de cliente y de viaje para en primer lugar
+--aplicar la funcion inserta_direccion() y despues insertar la tupla cliente en la tabla cliente con el nuevo
+--id direccion
 CREATE OR REPLACE FUNCTION inserta_cliente(nom varchar(30),pat varchar(30),
 										  mat varchar(30),tel DECIMAL(10),cel DECIMAL(10),email varchar(254),num_vi DECIMAL(10),
 										 ent time,sal time,foto varchar(1000),fac varchar(500),

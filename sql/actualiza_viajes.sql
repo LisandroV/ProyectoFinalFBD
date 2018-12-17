@@ -6,5 +6,6 @@ if (TG_OP = 'INSERT') then
 end if;
 return null; end; $$ Language plpgsql;
 
+--Trigger que ejecuta la funcion actualiza_viajes() en la tabla solicitar
 create trigger actualiza_viajes after insert on solicitar
 for each row execute procedure actualiza_viajes();
