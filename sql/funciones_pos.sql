@@ -70,3 +70,26 @@ $$ LANGUAGE plpgsql;
 
 create trigger valida_viaje after insert or update on viaje
 for each row execute procedure valida_viaje();
+
+CREATE OR REPLACE FUNCTION inserta_direccion(estad VARCHAR(30), delegacio VARCHAR(30), cal varchar(30),numer DECIMAL(10),c INTEGER) RETURNS INTEGER AS $$
+DECLARE
+	mi_id INTEGER;
+BEGIN
+	INSERT INTO direccion (estado,delegacion,calle,numero,cp) values(estad,delegacio,cal,numer,c) returning id_direccion into mi_id;
+return mi_id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION inserta_chofer(lic VARCHAR(9),nom varchar(30),pat varchar(30),
+										  mat varchar(30),cel DECIMAL(10),email varchar(254),f_ingreso timestamp,
+										 foto varchar(1000),rfc CHARACTER(13),
+										 estad VARCHAR(30), delegacio VARCHAR(30), cal varchar(30),numer DECIMAL(10),c INTEGER) RETURNS varchar AS $$
+DECLARE
+	id_direccion INTEGER;
+	lol varchar;
+BEGIN
+	select inserta_direccion(estad,delegacio,cal,numer,c) into id_direccion;
+	INSERT INTO chofer values (lic,id_direccion,nom,pat,mat,cel,email,f_ingreso,foto,rfc) returning lic into lol;
+return lol;
+END;
+$$ LANGUAGE plpgsql;
