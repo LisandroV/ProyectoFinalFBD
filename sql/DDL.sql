@@ -1,7 +1,7 @@
-﻿--DROP DATABASE IF EXISTS asoc_taxis;
---CREATE DATABASE asoc_taxis;
+﻿DROP DATABASE IF EXISTS asoc_taxis;
+CREATE DATABASE asoc_taxis;
 
---\c asoc_taxis;
+\c asoc_taxis;
 
 CREATE TABLE Direccion (
 id_direccion SERIAL,
@@ -57,7 +57,7 @@ materno VARCHAR (30),
 telefono_de_casa DECIMAL (10),
 celular DECIMAL (10),
 email VARCHAR (254),
-num_viajes DECIMAL(10),
+num_viajes DECIMAL(10) DEFAULT 0,
 hora_entrada time,
 hora_salida time,
 foto VARCHAR(1000),
@@ -203,10 +203,10 @@ id_infraccion SERIAL,
 num_licencia VARCHAR (9),
 numero_economico INTEGER,
 monto_a_pagar INTEGER,
-placa_del_agente VARCHAR(20),
-lugar VARCHAR(200),
-hora time,
-razon VARCHAR(200),
+placa_del_agente VARCHAR(20) NOT NULL,
+lugar VARCHAR(200) NOT NULL,
+hora time NOT NULL,
+razon VARCHAR(200) NOT NULL,
 CONSTRAINT pk_infraccion PRIMARY KEY (id_infraccion),
 CONSTRAINT fk1_infraccion FOREIGN KEY (num_licencia) REFERENCES Chofer(num_licencia) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT fk2_infraccion FOREIGN KEY (numero_economico) REFERENCES Vehiculo(numero_economico) ON DELETE RESTRICT ON UPDATE CASCADE

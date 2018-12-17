@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="/static/css/font-awesome.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/estilos_auto.css">
   <link rel="stylesheet" href="/static/css/fontello.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/static/js/main.js"></script>
 </head>
 
 <body>
@@ -16,6 +18,10 @@
   <h1> ¡UNETE A LA MEJOR EMPRESA DE TRANSPORTE! </h1>
 </center>
 </header>
+
+<form action="/">
+  <input type="submit" value="Go to Home" />
+</form>
 
 <h2> Registra tú Auto </h2>
 <br>
@@ -36,29 +42,38 @@
     </div>
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
-        <label for="nombre">Número Economico</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Numero Economico">
-        <label for="nombre">Número de Pasajeros</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Numero de Pasajeros">
-        <label for="nombre">Marca</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Marca">
-        <label for="nombre">Modelo</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Modelo">
-        <label for="nombre">Año del Vehiculo</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Año">
-        <label for="nombre">Número de Puertas</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Numero de Puertas">
-        <label for="nombre">¿Estandar ó Automatico?</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Estandar/automatico">
-        <label for="nombre">Llantas de Refacción</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Llantas de refaccion">
-        <label for="nombre">Capacidad de tanque</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Capacidad de Tanque">
-        <label for="nombre">Número de Cilindros</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Numero Cilindros">
-        <div class="text-center">
-        <button class="btn btn-primary">Enviar</button>
-        </div>
+          <form id="form-reg">
+            <label for="nombre">RFC del dueño</label>
+            <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Enter RFC">
+            <label for="nombre">Aseguradora</label>
+            <input type="text" class="form-control" id="seguro" name="seguro" placeholder="id de la aseguradora">
+            <label for="nombre">Número de Pasajeros</label>
+            <input type="text" class="form-control" id="num_pasajeros" name="num_pasajeros" placeholder="Enter Numero de Pasajeros">
+            <label for="nombre">Marca</label>
+            <input type="text" class="form-control" id="marca" name="marca" placeholder="Enter Marca">
+            <label for="nombre">Modelo</label>
+            <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Enter Modelo">
+            <label for="nombre">Año del Vehiculo</label>
+            <input type="text" class="form-control" id="anio" name="anio" placeholder="Enter Año">
+            <label for="nombre">Tiene llanta de Refacción</label><br>
+            <input type="radio" name="refaccion" value="TRUE" checked> Sí
+            <input type="radio" name="refaccion" value="FALSE"> No<br>
+            <label for="nombre">Transmisión:</label><br>
+            <input type="radio" name="transmision" value="E" checked> Estandar
+            <input type="radio" name="transmision" value="A"> Automatico<br>
+            <label for="nombre">Gasolina o Híbrido:</label><br>
+            <input type="radio" name="hibrido" value="G" checked> Gasolina
+            <input type="radio" name="hibrido" value="H">Hibrido<br>
+            <label for="nombre">Número de Cilindros</label>
+            <input type="text" class="form-control" id="cilindros" name="cilindros" placeholder="Enter Numero Cilindros">
+            <label for="nombre">Capacidad de tanque</label>
+            <input type="text" class="form-control" id="tanque" name="tanque" placeholder="Enter Capacidad de Tanque">
+            <label for="nombre">Número de Puertas</label>
+            <input type="text" class="form-control" id="num_puertas" name="num_puertas" placeholder="Enter Numero de Puertas">
+            <div class="text-center">
+                <button class="btn btn-primary" id="reg-auto">Registrar</button>
+            </div>
+          </form>
 
       </div>
     </div>

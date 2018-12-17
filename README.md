@@ -50,7 +50,13 @@ pip install flask psycopg2
 
 ## Ejecución del proyecto
 
-desde la carpeta **src** levantamos el servidor:
+1. Crear y poblar la base de datos. En la carpeta **sql**:
+```sh
+./crea_db.sh                  //crea y popula la BD
+```
+**Nota:** Si acaso sale un error FATAL: Peer authentication failed for user "postgres", sera necesario modificar el pg_hba.conf de su postgres y cambiar de peer a md5, visiten la pagina https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge**src**
+
+2. desde la carpeta **src** levantamos el servidor:
 ```sh
 source taxis-env/bin/activate   //se activa el ambiente virtual
 python app.py                   //se levanta el servidor

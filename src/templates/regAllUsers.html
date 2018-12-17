@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="/static/css/font-awesome.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/css/estilos_generico.css">
+  <link rel="stylesheet" href="/static/css/estilos_auto.css">
   <link rel="stylesheet" href="/static/css/fontello.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/static/js/main.js"></script>
 </head>
 
 <body>
@@ -17,6 +19,10 @@
 </center>
 </header>
 
+<form action="/">
+  <input type="submit" value="Go to Home" />
+</form>
+
 <h2> Registrate como {{ type_user.name }} </h2>
 <br>
 <div class="container">
@@ -26,7 +32,7 @@
       <hr class="my-4">
 
     </div>
-  </div>
+    </div>
   <div class="row">
     <div class="col-lg-4 ml-auto ">
 
@@ -36,28 +42,43 @@
     </div>
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
+    <form id="form-users">
         <label for="nombre">Nombre</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Pedro">
+        <input type="text" class="form-control" id="nombre" name= "nombre" placeholder="Pedro">
         <label for="nombre">Apellido Paterno</label>
-        <input type="email" class="form-control" id="email" placeholder="Sánchez">
+        <input type="text" class="form-control" id="ap_paterno" name="ap_paterno" placeholder="Sánchez">
         <label for="nombre">Apellido Materno</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Hernández">
+        <input type="text" class="form-control" id="ap_materno" name="ap_materno" placeholder="Hernández">
         <label for="nombre">Correo Electronico</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="exapmle@example.com">
+        <input type="text" class="form-control" id="correo" name ="correo" placeholder="exapmle@example.com">
         <label for="nombre">Telefono de Casa </label>
-        <input type="tema" class="form-control" id="tema" placeholder="(55)55555555">
+        <input type="text" class="form-control" id="tel_casa" name="tel_casa" placeholder="(55)55555555">
         <label for="nombre">Telefono Celular</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="(55)55555555">
+        <input type="text" class="form-control" id="tel_cel" name="tel_cel" placeholder="(55)55555555">
+        <label for="nombre">Hora de entrada:</label>
+        <input type="text" class="form-control" id="entrada" name="entrada" placeholder="HH:MM">
+        <label for="nombre">Hora de salida:</label>
+        <input type="text" class="form-control" id="salida" name="salida" placeholder="HH:MM">
         <label for="nombre">{{ type_user.distinct }}</label>
-        <input type="tema" class="form-control" id="tema" placeholder="{{ type_user.text }}">
+        <input type="text" class="form-control" id="type_user" name= "type_user" placeholder="{{ type_user.text }}">
+        <label for="nombre">Estado</label>
+        <input type="text" class="form-control" id="estado" name="estado" placeholder="Enter Estado">
+        <label for="nombre">Delegacion</label>
+        <input type="text" class="form-control" id="delegacion" name="delegacion" placeholder="Enter Delegacion">
+        <label for="nombre">Calle</label>
+        <input type="text" class="form-control" id="calle" name="calle" placeholder="Enter calle">
+        <label for="nombre">Número</label>
+        <input type="text" class="form-control" id="numero" name="numero" placeholder="Enter numero">
+        <label for="nombre">Codigo Postal</label>
+        <input type="text" class="form-control" id="cp" name="cp" placeholder="Enter codigo postal">
         <label for="nombre">¡Necesitamos una foto tuya!</label>
-        <form method="post" enctype="multipart/form-data"><br>
           <input type=file size=60 name="file1"><br><br>
           <input type=submit value="subir"><br>
-        </form><br>
         <div class="text-center">
-        <button class="btn btn-primary">Enviar</button>
+        <button class="btn btn-primary" id="reg-users">Enviar</button>
         </div>
+        <input type="hidden" id="type_user_name" name="type_user_name" value="{{ type_user.name }}">
+     </form>
 
       </div>
     </div>
