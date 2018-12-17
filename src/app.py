@@ -17,7 +17,7 @@ def main():
 #    cur.execute("SELECT * FROM test")
 #    items = cur.fetchall()
 #    print items;
-    return render_template('index.html', **context)
+    return render_template('index.html')
 
 
 @app.route("/registro/auto", methods=['GET'])
@@ -81,13 +81,43 @@ def registra_auto_post():
     finally:
         con.commit()
 
-    resp = jsonify({'message': 'Ha sido registrado'})
+    resp = jsonify({'message': '¡Vehículo registrado!'})
+    resp.status_code = 202
+    return resp
+
+
+@app.route("/registro/conductor", methods=['POST'])
+def registra_conductor_post():
+    r = request.form
+    query = "SELECT inserta_chofer('"
+    query += r["num_licencia"]+"','"
+    query += r["nombre"]+"','"
+    query += r["paterno"]+"','"
+    query += r["materno"]+"','"
+    query += r["cel"]+"','"
+    query += r["email"]+"','"
+    query += datetime.now().strftime('%Y/%m/%d %H:%M:%S')+"','"
+    query += "/static/img/users/chofer/"+r["num_licencia"]+".jpg','"
+    query += r["rfc"]+"','"
+    query += r["estado"]+"','"
+    query += r["delegacion"]+"','"
+    query += r["calle"]+"','"
+    query += r["numero"]+"','"
+    query += r["cp"]+"');"
+
+    try:
+        cur.execute(query)
+    except psycopg2.Error, e:
+        return error_500(e)
+    finally:
+        con.commit()
+    resp = jsonify({'message': '¡Conductor registrado!'})
     resp.status_code = 202
     return resp
 
 def error_500(e):
-    resp = jsonify({'error': e.diag.message_primary,
-                    'specific': e.pgerror})
+    print e.pgerror
+    resp = jsonify({'error': e.pgerror})
     resp.status_code = 500
     return resp
 

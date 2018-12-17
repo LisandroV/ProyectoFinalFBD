@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="/static/css/font-awesome.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/estilos_auto.css">
   <link rel="stylesheet" href="/static/css/fontello.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -41,9 +41,9 @@
     </div>
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
-      <form id="form-reg">
+      <form id="form-chofer">
         <label for="nombre">Numero de Licencia</label>
-        <input type="text" class="form-control" id="num_licencia" name="num" placeholder="Enter Numero de Licencia">
+        <input type="text" class="form-control" id="num_licencia" name="num_licencia" placeholder="Enter Numero de Licencia">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" id="nombre"  name="nombre" placeholder="Enter Nombre">
         <label for="nombre">Apellido Paterno</label>
@@ -52,10 +52,10 @@
         <input type="text" class="form-control" id="materno" name="materno" placeholder="Enter Celular">
         <label for="nombre">Email</label>
         <input type="text" class="form-control" id="email" name="email" placeholder="Enter email ">
+        <label for="nombre">Telefono Celular</label>
+        <input type="text" class="form-control" id="cel" name="cel" placeholder="(55)55555555">
         <label for="nombre">Ingrese RFC</label>
         <input type="text" class="form-control" id="rfc" name="rfc" placeholder="Enter RFC">
-        <label for="nombre">RFC</label>
-        <input type="text" class="form-control" id="give_rfc" name="give_rfc" placeholder="Enter RFC">
         <label for="nombre">Estado</label>
         <input type="text" class="form-control" id="estado" name="estado" placeholder="Enter Estado">
         <label for="nombre">Delegacion</label>
@@ -72,7 +72,7 @@
           <input type=submit value="subir"><br>
         </form><br>
         <div class="text-center">
-        <button class="btn btn-primary">Enviar</button>
+        <button class="btn btn-primary" id="reg-chofer">Enviar</button>
         </div>
           </form>
       </div>
