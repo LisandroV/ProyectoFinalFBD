@@ -20,6 +20,8 @@ $$ LANGUAGE plpgsql;
 
 
 CREATE TRIGGER validar_c BEFORE INSERT ON Chofer FOR EACH ROW EXECUTE PROCEDURE validar_email();
+CREATE TRIGGER validar_c BEFORE INSERT ON Cliente FOR EACH ROW EXECUTE PROCEDURE validar_email();
+CREATE TRIGGER validar_c BEFORE INSERT ON Aseguradora FOR EACH ROW EXECUTE PROCEDURE validar_email();
 
 --Funcion que valida que los datos insertados en vehiculo sean correctos
 CREATE OR REPLACE FUNCTION valida_vehiculo() RETURNS TRIGGER AS $$
@@ -56,4 +58,15 @@ $$ LANGUAGE plpgsql;
 create trigger valida_vehiculo after insert or update on vehiculo
 for each row execute procedure valida_vehiculo();
 
+--Funcion que valida que los datos insertados en viaje sean correctos
+CREATE OR REPLACE FUNCTION valida_viaje() RETURNS TRIGGER AS $$
+BEGIN
+	IF new.distancia > 100 THEN
+		RAISE EXCEPTION 'No se pueden hacer viajes de mas de 100km';
+	END IF;
+	RETURN null;
+END;
+$$ LANGUAGE plpgsql;
 
+create trigger valida_viaje after insert or update on viaje
+for each row execute procedure valida_viaje();
