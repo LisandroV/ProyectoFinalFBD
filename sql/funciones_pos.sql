@@ -115,7 +115,6 @@ for each row execute procedure actualiza_cargo();
 insert into solicitar values(163,211,'8 Delaware','9 Larry Street',null);
 
 --Funcion que valida que los datos insertados en vehiculo sean correctos
-
 CREATE OR REPLACE FUNCTION valida_vehiculo() RETURNS TRIGGER AS $$
 BEGIN
 	IF new.numero_de_pasajeros NOT IN (1,2,3,4,5,6) THEN
