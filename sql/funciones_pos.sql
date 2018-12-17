@@ -93,3 +93,18 @@ BEGIN
 return lol;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION inserta_cliente(nom varchar(30),pat varchar(30),
+										  mat varchar(30),tel DECIMAL(10),cel DECIMAL(10),email varchar(254),num_vi DECIMAL(10),
+										 ent time,sal time,foto varchar(1000),fac varchar(500),
+										 ins VARCHAR(500), un VARCHAR(500),
+										  estad VARCHAR(30), delegacio VARCHAR(30), cal varchar(30),numer DECIMAL(10),c INTEGER) RETURNS varchar AS $$
+DECLARE
+	id_direccion INTEGER;
+	lol varchar;
+BEGIN
+	select inserta_direccion(estad,delegacio,cal,numer,c) into id_direccion;
+	INSERT INTO cliente values (default,id_direccion,nom,pat,mat,tel,cel,email,num_vi,ent,sal,foto,fac,ins,un) returning nom into lol;
+return lol;
+END;
+$$ LANGUAGE plpgsql;
