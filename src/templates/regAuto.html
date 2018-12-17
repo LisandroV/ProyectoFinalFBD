@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/estilos_auto.css">
   <link rel="stylesheet" href="/static/css/fontello.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="/static/js/main.js"></script>
 </head>
 
 <body>
@@ -36,29 +38,29 @@
     </div>
     <div class="col-lg-4 mr-auto ">
       <div class="form-group">
-        <label for="nombre">Número Economico</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Numero Economico">
-        <label for="nombre">Número de Pasajeros</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Numero de Pasajeros">
-        <label for="nombre">Marca</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Marca">
-        <label for="nombre">Modelo</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Modelo">
-        <label for="nombre">Año del Vehiculo</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Año">
-        <label for="nombre">Número de Puertas</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Numero de Puertas">
-        <label for="nombre">¿Estandar ó Automatico?</label>
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter Estandar/automatico">
-        <label for="nombre">Llantas de Refacción</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter Llantas de refaccion">
-        <label for="nombre">Capacidad de tanque</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Capacidad de Tanque">
-        <label for="nombre">Número de Cilindros</label>
-        <input type="tema" class="form-control" id="tema" placeholder="Enter Numero Cilindros">
-        <div class="text-center">
-        <button class="btn btn-primary">Enviar</button>
-        </div>
+          <form id="form-reg">
+            <label for="nombre">Número de Pasajeros</label>
+            <input type="text" class="form-control" id="num_pasajeros" name="num_pasajeros" placeholder="Enter Numero de Pasajeros">
+            <label for="nombre">Marca</label>
+            <input type="tema" class="form-control" id="marca" placeholder="Enter Marca">
+            <label for="nombre">Modelo</label>
+            <input type="nombre" class="form-control" id="modelo" placeholder="Enter Modelo">
+            <label for="nombre">Año del Vehiculo</label>
+            <input type="tema" class="form-control" id="anio" placeholder="Enter Año">
+            <label for="nombre">Número de Puertas</label>
+            <input type="tema" class="form-control" id="num_puertas" placeholder="Enter Numero de Puertas">
+            <label for="nombre">¿Estandar ó Automatico?</label>
+            <input type="nombre" class="form-control" id="transmision" placeholder="Enter Estandar/automatico">
+            <label for="nombre">Llantas de Refacción</label>
+            <input type="tema" class="form-control" id="refaccion" placeholder="Enter Llantas de refaccion">
+            <label for="nombre">Capacidad de tanque</label>
+            <input type="tema" class="form-control" id="tanque" placeholder="Enter Capacidad de Tanque">
+            <label for="nombre">Número de Cilindros</label>
+            <input type="tema" class="form-control" id="cilindros" placeholder="Enter Numero Cilindros">
+            <div class="text-center">
+                <button class="btn btn-primary" id="registrar">Registrar</button>
+            </div>
+          </form>
 
       </div>
     </div>

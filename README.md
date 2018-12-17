@@ -50,7 +50,12 @@ pip install flask psycopg2
 
 ## Ejecución del proyecto
 
-desde la carpeta **src** levantamos el servidor:
+1. Crear y poblar la base de datos. En la carpeta **sql**:
+```sh
+./crea_db.sh                  //crea y popula la BD
+```
+
+2. desde la carpeta **src** levantamos el servidor:
 ```sh
 source taxis-env/bin/activate   //se activa el ambiente virtual
 python app.py                   //se levanta el servidor
