@@ -54,6 +54,7 @@ pip install flask psycopg2
 ```sh
 ./crea_db.sh                  //crea y popula la BD
 ```
+**Nota:** Si acaso sale un error FATAL: Peer authentication failed for user "postgres", sera necesario modificar el pg_hba.conf de su postgres y cambiar de peer a md5, visiten la pagina https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge**src**
 
 2. desde la carpeta **src** levantamos el servidor:
 ```sh
